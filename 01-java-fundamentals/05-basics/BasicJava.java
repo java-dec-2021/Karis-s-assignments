@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+
 class BasicJava {
     public void printNums() {
         for (int i=1; i<256; i++){
@@ -17,6 +19,7 @@ class BasicJava {
         for (int i =0; i < myArray.length; i++){
             System.out.println(myArray[i]);
         } 
+        System.out.println(Arrays.toString(myArray)); //another way to print array
     }
     public void maxValue(int[] array){
         int max = array[0];
@@ -34,5 +37,12 @@ class BasicJava {
         }
         return myArray;
 
+    }
+    public void getAvg(int[] array){
+        int average = 0;
+        int sum =0;
+        for (int i =0; i < array.length; i++){
+            sum = sum + array[i];
+        } 
     }
 }
