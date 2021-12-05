@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ExceptionsFun {
+class ExceptionsFun {
     public static void main(String[] args) {
         
         ArrayList<Object> myList = new ArrayList<Object>();
@@ -13,7 +13,7 @@ public class ExceptionsFun {
             try{
                 Integer castedValue = (Integer) myList.get(i);
             }catch(ClassCastException e){
-                System.out.println("Can't cast to an Integer");
+                System.out.println("Can't cast to an Integer: " +e);
             }
         }
     }
