@@ -30,7 +30,7 @@ class BasicJava {
         }
         System.out.println("max is " + max);
     }
-    public ArrayList oddArray(){
+    public ArrayList<Integer> oddArray(){
         ArrayList<Integer> myArray = new ArrayList<Integer>();
         for (int i=1; i<256; i+=2){
             myArray.add(i);
@@ -39,10 +39,38 @@ class BasicJava {
 
     }
     public void getAvg(int[] array){
-        int average = 0;
-        int sum =0;
+        double average = 0;
+        double sum =0;
         for (int i =0; i < array.length; i++){
             sum = sum + array[i];
         } 
+        average = sum/array.length;
+        System.out.println("average is " + average);
+    }
+
+    public void greaterY(int[] array, int y){
+        int greater =0;
+        for (int i=0; i < array.length; i++){
+            if (array[i] > y) {
+                greater = greater +1;
+            }
+        }
+        System.out.println("values greater than y: " + greater);
+    }
+
+    public void squareArray(int[] array){
+        for (int i=0; i < array.length; i++){
+            array[i] = array[i]*array[i];
+        }
+        System.out.println(Arrays.toString(array));
+    }
+
+    public void elimNeg(int[] array){
+        for (int i=0; i < array.length; i++){
+            if (array[i]<0){
+                array[i] =0;
+            }
+        }
+        System.out.println(Arrays.toString(array));
     }
 }
