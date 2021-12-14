@@ -14,7 +14,14 @@ public class DojoController {
 	
 	@RequestMapping("/dojo/{city}")
 	public String showCity(@PathVariable("city") String cityName) {
-		return cityName + " Dojo is located in Southern California";
+		switch(cityName) {
+		case "burbank":
+			return "Burbank Dojo is located in Southern California";
+		case "san-jose":
+			return "SJ dojo is the headquarters";
+		default:
+			return String.format("%s is pretty sweet!",cityName);
+		}
 	}
 
 }
