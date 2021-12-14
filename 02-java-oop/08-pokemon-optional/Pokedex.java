@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 
 public class Pokedex extends AbstractPokemon{
-    private ArrayList<String> myPokemons = Pokemon.pokelist;
+    private ArrayList<Pokemon> myPokemons;
+
+    public ArrayList<Pokemon> getMyPokemons() {
+        return myPokemons;
+    }
 
     public void listPokemon(){
         for(Pokemon poke : myPokemons){

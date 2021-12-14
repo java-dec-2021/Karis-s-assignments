@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 public class Pokemon{
     private String name;
     private int health;
     private String type;
     public static int count =0;
-
+    
+    
     public Pokemon(){
         Pokemon.count++;
     }
@@ -12,6 +14,7 @@ public class Pokemon{
         this.health = health;
         this.type = type;
         Pokemon.count ++;
+        
     }
     public int getHealth() {
         return health;

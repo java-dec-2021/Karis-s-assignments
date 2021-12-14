@@ -1,7 +1,5 @@
 import java.util.HashMap;
 import java.util.Set;
-
-import javax.sound.midi.Track;
 public class HashMapFun {
     public static void main(String[] args) {
 
@@ -18,7 +16,8 @@ public class HashMapFun {
         Set<String> keys = TrackList.keySet();
         for(String key : keys) {
             System.out.println(key);
-            System.out.println(TrackList.get(key));    
+            System.out.println(TrackList.get(key));   
+            // System.out.println(String.format("Track: %s: Lyrics: %s", key, TrackList.get(key))); 
         }
     }
 }

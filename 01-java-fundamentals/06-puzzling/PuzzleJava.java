@@ -19,11 +19,11 @@ class PuzzleJava {
 
     public char getRandomLetter (){
         char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-        // char[] alphabet = new char[26]; // new array    
-        // for(char ch = 'a'; ch <= 'z'; ++ch)// fills alphabet array with the alphabet
-        // {
-        //     alphabet[ch-'a']=ch;
-        // } 
+        // String alphabetString = "abcdefghijklmnopqrstuvwxyz";
+        // String[] alphabet = new String[26];
+        // for (int i = 0; i < 26; i++) {
+        //     alphabet[i] = String.valueOf(alphabetString.charAt(i));
+        // }
         int randomIndex = randMachine.nextInt(26);
         return alphabet[randomIndex];
     }
@@ -31,8 +31,7 @@ class PuzzleJava {
     public String generatePassword(){
         String password = "";
         for(int i=1; i<9; i++){
-            char letter =getRandomLetter();
-            password = password +letter;
+            password = password +getRandomLetter();
         }
         return password;
     }
