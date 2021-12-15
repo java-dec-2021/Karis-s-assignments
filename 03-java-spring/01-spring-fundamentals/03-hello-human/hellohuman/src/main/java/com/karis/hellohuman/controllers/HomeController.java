@@ -7,16 +7,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-	@RequestMapping("/home")
-	public String index() {
-		return "Hello Human";
-	}
-	
+//	@RequestMapping("/home")
+//	public String index() {
+//		return "Hello Human";
+//	}
+//	
 	@RequestMapping("/")
-	public String name(@RequestParam(value="name", required = false) String name,
-			@RequestParam(value="last_name", required = false) String lastName) {
+	public String name(@RequestParam(value="name", required = false, defaultValue="Human") String name,
+			@RequestParam(value="last_name", required = false, defaultValue="") String lastName) {
 		return "Hello " + name + " " + lastName;
 	}
+	
 	
 	@RequestMapping("/name")
 	public String nameTimes(@RequestParam(value="name") String name, @RequestParam(value="times") int number) {
@@ -29,3 +30,4 @@ public class HomeController {
 		
 	}
 }
+	
