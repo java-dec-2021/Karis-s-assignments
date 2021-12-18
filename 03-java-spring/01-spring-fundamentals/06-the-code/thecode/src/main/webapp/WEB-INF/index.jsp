@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome</title>
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+	<h1>The Code</h1>
 	<form action="guess" method="POST">
-	<span><c:out value="${error}"/></span>
+	<span class="red"><c:out value="${error}"/></span>
 	<p><input type  = "text" name="code" placeholder="What is the code?"/></p>
 	<p><button>Submit</button></p>
 	</form>

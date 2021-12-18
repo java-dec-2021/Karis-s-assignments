@@ -9,6 +9,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class HomeController {
+	private Boolean isCorrect(String guess) {
+		return guess.equals("bushido");
+	}
 	
 	@RequestMapping("/")
 	public String index() {
@@ -18,7 +21,10 @@ public class HomeController {
 	@PostMapping("/guess")
 	public String welcome(@RequestParam("code") String code, RedirectAttributes redirectAtt) {
 		
-		if(code.equals("bushido")) {
+//		if(code.equals("bushido")) {
+//			return "redirect:/code";
+//		}
+		if(isCorrect(code)) {
 			return "redirect:/code";
 		}
 		
