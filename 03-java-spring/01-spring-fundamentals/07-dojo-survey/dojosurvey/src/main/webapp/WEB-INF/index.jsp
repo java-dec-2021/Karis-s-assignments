@@ -23,21 +23,27 @@
             <div class="form-group mb-2">
                 <label for="location">Dojo Location: </label>
                 <select class="form-control" name="location">
-                    <option value="Chicago">Chicago</option>
+                	<c:forEach items="${locations}" var="loc">
+                		<option value="${loc}"><c:out value="${loc}"/></option>
+                	</c:forEach>
+                   <!--  <option value="Chicago">Chicago</option>
                     <option value="Seattle">Seattle</option>
                     <option value="Online">Online</option>
                     <option value="Burbank">Burbank</option>
-                    <option value="Bellevue">Bellevue</option>
-                </select>
+                    <option value="Bellevue">Bellevue</option> -->
+         		</select>
             </div>
             <div class="form-group mb-2">
                 <label for="language">Favorite Language</label>
                 <select class="form-control" name="language">
-                    <option value="HTML">HTML</option>
+                	<c:forEach items="${languages}" var="lang"> 
+                		<option value="${lang}"><c:out value="${lang}"/></option>
+                	</c:forEach>
+                    <!-- <option value="HTML">HTML</option>
                     <option value="CSS">CSS</option>
                     <option value="Java">Java</option>
                     <option value="Python">Python</option>
-                    <option value="C#">C#</option>
+                    <option value="C#">C#</option> -->
                 </select>
             </div>
             <div class="form-group mb-1">

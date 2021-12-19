@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Survey Results</title>
 <link rel="stylesheet" href="css/style.css" />
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" 
@@ -14,10 +14,10 @@
 <body>
 	<div class="container bg-secondary col-3 flex justify-around mx-auto p-4 mt-5">
         <h1 class="text-primary">Submitted Info:</h1>
-        <h4 class="text-white">Name: <c:out value= "${name}"/></h4>
-        <h4 class="text-white">Dojo Location: <c:out value="${location}"/></h4>
-        <h4 class="text-white">Favorite Programming Language: <c:out value="${language}"/></h4>
-        <h4 class="text-white">Comment: <c:out value="${comment}"/></h4>
+        <h4 class="text-white">Name: <c:out value= "${result.name}"/></h4>
+        <h4 class="text-white">Dojo Location: <c:out value="${result.location}"/></h4>
+        <h4 class="text-white">Favorite Programming Language: <c:out value="${result.language}"/></h4>
+        <h4 class="text-white">Comment: <c:out value="${result.comment}"/></h4>
         <a href="/" class="btn btn-primary mt-2">Home</a>
     </div>
 </body>
