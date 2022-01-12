@@ -1,13 +1,15 @@
-package com.karis.languages.models;
+package com.karis.dojosninjas.models;
 
 import java.util.Date;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -17,20 +19,21 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity 
-@Table(name="languages")
-public class Language {
+@Table(name="ninjas")
+public class Ninja {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id; 
 	
 	@Size(min=2, max=20, message= "Name should be between 2-20 characters") 
-	private String name; 
+	private String firstName; 
 	
-	@Size(min=2, max=20, message= "Name should be between 2-20 characters")
-	private String creator;
-	
-	@NotNull (message= "Need to include a Current Version")
-	private float currentVersion;
+	@Size(min=2, max=20, message= "Name should be between 2-20 characters") 
+	private String lastName; 
+
+	@NotNull (message= "Need to include an age")
+	private int age;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -38,36 +41,66 @@ public class Language {
 	    
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="dojo_id")
+	private Dojo dojo;
 	    
-	public Language() {
+	public Ninja() {
 		
 	}
-	public Language(String name, String creator, float currentVersion) {
-		this.name = name;
-		this.creator = creator;
-		this.currentVersion = currentVersion;
+	
+
+
+	public Ninja( String firstName, String lastName, int age, Dojo dojo) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.dojo = dojo;
 	}
+
+
+	
 	public Long getId() {
 		return id;
 	}
-	public String getName() {
-		return name;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public String getFirstName() {
+		return firstName;
 	}
-	public String getCreator() {
-		return creator;
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public void setCreator(String creator) {
-		this.creator = creator;
+
+	public String getLastName() {
+		return lastName;
 	}
-	public float getCurrentVersion() {
-		return currentVersion;
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	public void setCurrentVersion(float currentVersion) {
-		this.currentVersion = currentVersion;
+
+	public int getAge() {
+		return age;
 	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public Dojo getDojo() {
+		return dojo;
+	}
+
+	public void setDojo(Dojo dojo) {
+		this.dojo = dojo;
+	}
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -88,5 +121,4 @@ public class Language {
     protected void onUpdate(){ //when object is updated save the Date that the object is updated at
         this.updatedAt = new Date();
     }
-	
 }

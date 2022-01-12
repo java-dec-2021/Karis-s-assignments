@@ -39,7 +39,7 @@ public class LanguagesController {
 	@RequestMapping(value="/languages", method=RequestMethod.POST)
 	public String create(@Valid @ModelAttribute("language") Language language, BindingResult result) {
 		if(result.hasErrors()) {
-			return "/index.jsp";
+			return "index.jsp";
 		}else {
 			languageService.createLanguage(language);
 			return "redirect:/languages";

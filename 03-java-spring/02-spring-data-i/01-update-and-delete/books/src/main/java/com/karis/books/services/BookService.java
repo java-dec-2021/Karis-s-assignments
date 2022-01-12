@@ -36,7 +36,7 @@ public class BookService {
 	}
 	
 	//update a book
-	public Book updateBook(Long id, String title, String desc, String lang, Integer numOfPages) {
+	public Book updateTheBook(Long id, String title, String desc, String lang, Integer numOfPages) {
 		Optional<Book> book = bookRepository.findById(id);
 		if(book.isPresent()) {
 			Book newBook= book.get();
@@ -50,7 +50,20 @@ public class BookService {
 			return null;
 		}
 	}
-	
+//	
+	public Book updateBook(Long id, Book book) {
+		Optional<Book> TheBook = bookRepository.findById(id);
+		if(TheBook.isPresent()) {
+			Book newBook= TheBook.get();
+			newBook.setTitle(book.getTitle());
+			newBook.setDescription(book.getDescription());
+			newBook.setLanguage(book.getLanguage());
+			newBook.setNumberOfPages(book.getNumberOfPages());
+			return bookRepository.save(newBook);
+		}else {
+			return null;
+		}
+	}
 	public void deleteBook(Long id) {
 		bookRepository.deleteById(id);
 	}

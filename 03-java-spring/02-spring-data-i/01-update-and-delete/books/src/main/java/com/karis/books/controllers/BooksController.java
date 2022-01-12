@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import com.karis.books.models.Book;
 import com.karis.books.services.BookService;
 
@@ -52,6 +53,28 @@ public class BooksController {
 		return "books/show.jsp";
 	}
 	
+	@RequestMapping("books/{id}/edit")
+	public String edit(@PathVariable("id") Long id, Model model) {
+		Book book = bookService.findBook(id);
+		model.addAttribute("book", book);
+		return "/books/edit.jsp";
+	}
+	
+	@RequestMapping(value="/books/{id}", method=RequestMethod.PUT)
+	public String update(@Valid @ModelAttribute("book") Book book, BindingResult result, @PathVariable("id") Long id) {
+		if(result.hasErrors()) {
+			return "/books/edit.jsp";
+		}else {
+			bookService.updateBook(id,book);
+			return "redirect:/books";
+		}
+	}
+	
+	@RequestMapping(value="/books/{id}", method=RequestMethod.DELETE)
+	public String destroy(@PathVariable("id") Long id) {
+		bookService.deleteBook(id);
+		return "redirect:/books";
+	}
 	
 	
 }

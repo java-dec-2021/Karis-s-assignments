@@ -1,24 +1,26 @@
-package com.karis.languages.models;
+package com.karis.dojosninjas.models;
 
 import java.util.Date;
-
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity 
-@Table(name="languages")
-public class Language {
+@Table(name="dojos")
+public class Dojo {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id; 
@@ -26,29 +28,31 @@ public class Language {
 	@Size(min=2, max=20, message= "Name should be between 2-20 characters") 
 	private String name; 
 	
-	@Size(min=2, max=20, message= "Name should be between 2-20 characters")
-	private String creator;
-	
-	@NotNull (message= "Need to include a Current Version")
-	private float currentVersion;
-	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
 	    
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+	
+	@OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
+	private List<Ninja> ninjas;
 	    
-	public Language() {
+	public Dojo() {
 		
 	}
-	public Language(String name, String creator, float currentVersion) {
+	
+	public Dojo(String name, List<Ninja> ninjas) {
 		this.name = name;
-		this.creator = creator;
-		this.currentVersion = currentVersion;
+		this.ninjas = ninjas;
 	}
+
+
 	public Long getId() {
 		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -56,17 +60,11 @@ public class Language {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCreator() {
-		return creator;
+	public List<Ninja> getNinjas() {
+		return ninjas;
 	}
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
-	public float getCurrentVersion() {
-		return currentVersion;
-	}
-	public void setCurrentVersion(float currentVersion) {
-		this.currentVersion = currentVersion;
+	public void setNinjas(List<Ninja> ninjas) {
+		this.ninjas = ninjas;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -88,5 +86,4 @@ public class Language {
     protected void onUpdate(){ //when object is updated save the Date that the object is updated at
         this.updatedAt = new Date();
     }
-	
 }
